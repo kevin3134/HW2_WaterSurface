@@ -110,13 +110,6 @@ int main()
     GerstnerWave  waves[10];
     glm::vec2 windDir = glm::vec2(0.5f, 0.5f);
     setGersterWaveData(shader, windDir, waveCount, waves);
-    int waveMapCount = 0;
-    unsigned int waveMaps[5];
-    for (int i = 0; i < waveMapCount; ++i) {
-        waveMaps[i] = genGersterWaveTexture(windDir);
-        shader.use();
-        shader.setInt("waveMaps[" + std::to_string(i) + "]", i);
-    }
 
     // Game loop
     while (!glfwWindowShouldClose(window)) {
@@ -157,13 +150,7 @@ int main()
         shader.setVec3("viewPos", gCamera.Position);
         shader.setVec3("deepWaterColor", glm::vec3(0.10f, 0.20f, 0.3f));
         shader.setVec3("shallowWaterColor", glm::vec3(0.45f, 0.55f, 0.7f));
-        shader.setInt("waveMapCount", waveMapCount);
-        for (unsigned int i = 0; i < waveMapCount; ++i) {
-            glActiveTexture(GL_TEXTURE0 + i);
-            //glBindTexture(GL_TEXTURE_2D, waveMaps[i]);
-            glBindTexture(GL_TEXTURE_CUBE_MAP, skybox.texture);
 
-        }
 
         glBindVertexArray(VAO);
         glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
@@ -216,7 +203,7 @@ GLFWwindow *init()
 
 
     // Create a window object
-    GLFWwindow *window = glfwCreateWindow(gScreenWidth, gScreenHeight, "Window Title", nullptr, nullptr);
+    GLFWwindow *window = glfwCreateWindow(gScreenWidth, gScreenHeight, "WaterSurface", nullptr, nullptr);
     if (window == nullptr) {
         std::cout << "Failed to create GLFW window!" << std::endl;
         glfwTerminate();

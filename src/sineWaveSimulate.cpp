@@ -177,7 +177,7 @@ GLFWwindow *init()
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 
     // Create a window object
-    GLFWwindow *window = glfwCreateWindow(gScreenWidth, gScreenHeight, "Window Title", nullptr, nullptr);
+    GLFWwindow *window = glfwCreateWindow(gScreenWidth, gScreenHeight, "WaterSurface", nullptr, nullptr);
     if (window == nullptr) {
         std::cout << "Failed to create GLFW window!" << std::endl;
         glfwTerminate();
