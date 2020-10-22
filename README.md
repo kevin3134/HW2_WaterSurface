@@ -5,7 +5,7 @@
 ![](https://img.shields.io/badge/OpenGL-3.3-green.svg)
 
 ### 目标结果：
-###### 用openGL模拟水面
+###### 用openGL模拟水面，理想效果 https://threejs.org/examples/#webgl_shaders_ocean2
 
 ### 结果参考：
 ##### sine波叠加
